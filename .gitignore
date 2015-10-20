@@ -1,0 +1,12 @@
+.*
+*.pid
+env.conf
+*.zip*
+dist/
+!test/env.conf
+!.gitignore
+node_modules/
+/access.log
+/project/
+/target/
+*.iml
