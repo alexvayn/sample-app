@@ -1,25 +1,87 @@
 <div class="home">
-  <div class="jumbotron centered">
-    <h1>IDioM POC Demo</h1>
-    <h2>Logged in user:</h2>
-    <p>{{decodedJwt.username}}</p>
-    <h2>This user is entitled to access the following applications:</h2>
-    <table>
-        <tr ng-repeat="x in userProducts" > <td>  <p><a class="btn btn-primary btn-lg" role="button" ng-click="listUserFunctionsForProduct(x)">{{getProductName(x)}}</a></p></td> </tr>
-    </table>
+    <div class="jumbotron centered">
 
-    <p>Search String:<input type="text" ng-model="userInput" placeholder="cnorris"> 
-        Search By:<input type="text" ng-model="userSearchBy" placeholder="cnorris"> (e.g., login, email, firstName, lastName</p>
-    <p><a class="btn btn-primary btn-lg" role="button" ng-click="findUsers(userInput, userSearchBy)">Find Users</a></p>
+        <h1>IDioM POC Demo</h1>
 
-   <table class="userListTable">
+        <div class="roundedBox">
+            <h2>User Authentication Details</h2>
 
-    <tr> <th>User ID</th> <th>Full Name</th> <th>Email</th> </tr>
-        <tr ng-repeat="z in findUserResult" > <td> {{z.sAMAccountName}}</td> <td> {{z.displayName}}</td><td> {{z.mail}}</td></tr>
-    </table>
+            <h3>Logged in user:</h3>
 
-    <h2 ng-show="jwt">JWT for this user is:</h2>
-    <pre ng-show="jwt" class="jwt"><code>{{jwt}}</code></pre>
-    <pre ng-show="jwt" class="jwt"><code>{{decodedJwt | json}}</code></pre>
+            <p>{{decodedJwt.username}}</p>
 
-</div>
+            <h3 ng-show="jwt">JWT Token for this user is:</h3>
+            <pre ng-show="jwt" class="jwt"><code>{{jwt}}</code></pre>
+            <pre ng-show="jwt" class="jwt"><code>{{decodedJwt | json}}</code></pre>
+        </div>
+
+        <div class="roundedBox">
+            <h2>User Entitlements</h2>
+
+            <h3>This user is entitled to access the following applications:</h3>
+            <table>
+                <tr>
+                    <td ng-repeat="x in userProducts"><p><a class="btn btn-primary btn-lg" role="button"
+                                                            ng-click="listUserFunctionsForProduct(x)">{{getProductName(x.id)}}</a>
+                    </p></td>
+                </tr>
+            </table>
+
+            <div class="functionList">
+            <h4 ng-show="productName">For <i>{{productName}}</i>, the user has following functions</h4>
+            <table class="userListTable">
+                <tr ng-repeat="z in functions">
+                    <td> {{z.name}}</td>
+                </tr>
+            </table>
+            </div>
+
+        </div>
+
+        <div class="roundedBox">
+            <h2>User Lookup</h2>
+
+            <p>Search: <input type="text" ng-model="userInput" placeholder="cnorris">
+            </p>
+
+            <p> Search By:
+            <label>
+                <input type="radio" ng-model="userSearchBy" value="login">
+                Login
+            </label>
+            <label>
+                <input type="radio" ng-model="userSearchBy" value="email">
+                Email
+            </label>
+            <label>
+                <input type="radio" ng-model="userSearchBy" value="firstName">
+                First Name
+            </label>
+            <label>
+                <input type="radio" ng-model="userSearchBy" value="lastName">
+                Last Name
+            </label>
+            <br/>
+            </p>
+
+            <p><a class="btn btn-primary btn-lg" role="button" ng-click="findUsers(userInput, userSearchBy)">Find
+                Users</a>
+            </p>
+
+            <table class="userListTable">
+
+                <tr>
+                    <th>User ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                </tr>
+                <tr ng-repeat="z in findUserResult">
+                    <td> {{z.sAMAccountName}}</td>
+                    <td> {{z.displayName}}</td>
+                    <td> {{z.mail}}</td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>

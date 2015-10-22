@@ -1,3 +1,26 @@
 .red {
   color: red;
 }
+.roundedBox {
+  border-radius: 25px;
+  border: 2px solid #00a890;
+  padding: 20px;
+  padding-top: 5px;
+  width: 80%;
+  height: 80%;
+  margin: 25px;
+}
+
+h2 {
+  color: #00a890;
+  font-weight: bold;
+}
+
+.functionList {
+  padding-left: 25px;
+}
+
+label {
+  font-weight: normal;
+  font-size: .75em;
+}

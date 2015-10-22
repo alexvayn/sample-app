@@ -69,14 +69,15 @@ angular.module( 'sample.home', [
     return name;
   }
 
-  $scope.listUserFunctionsForProduct = function(productCode) {
+  $scope.listUserFunctionsForProduct = function(prod) {
     $http({
         url: 'http://192.78.139.240:3001/idiom/internal/userFunctionsByProduct',
-        data: {productId: productCode},
+        data: {productId: prod.id},
         method: 'POST'
       }).then(function(res) {
-        alert('User is entitled to the following functions: \n' + JSON.stringify(res.data));
+        //alert('User is entitled to the following functions: \n' + JSON.stringify(res.data));
         $scope.functions = res.data;
+        $scope.productName = prod.name;
         return $scope.functions;
       }, function(error) {
         $scope.functions = error;
@@ -85,6 +86,7 @@ angular.module( 'sample.home', [
   }
 
  // $scope.userInput = "senders";
+   // $scope.userSearchBy = "login";
 
   $scope.findUsers = function(userInput, userSearchBy) {
 
