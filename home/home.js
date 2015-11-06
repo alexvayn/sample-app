@@ -36,7 +36,7 @@ angular.module( 'sample.home', [
 
   $scope.getUserProducts = function() {
     $http({
-      url: 'http://192.78.139.240:3001/idiom/internal/userProducts',
+      url: 'http://192.78.139.240:3001/authz/internal/v1/user-products',
       method: 'POST'
     }).then(function(res) {
       $scope.userProducts = res.data;
@@ -71,7 +71,7 @@ angular.module( 'sample.home', [
 
   $scope.listUserFunctionsForProduct = function(prod) {
     $http({
-        url: 'http://192.78.139.240:3001/idiom/internal/userFunctionsByProduct',
+        url: 'http://192.78.139.240:3001/authz/internal/v1/user-functions-by-product',
         data: {productId: prod.id},
         method: 'POST'
       }).then(function(res) {
@@ -95,9 +95,9 @@ angular.module( 'sample.home', [
 
 
     $http({
-        url: 'http://192.78.139.240:3001/idiom/internal/user/findUsers',
-        data: {searchQuery: userInput, searchBy: userSearchBy},
-        method: 'POST'
+        url: 'http://192.78.139.240:3001/authn/internal/v1/find-users/' + userSearchBy + '/' + userInput,
+        param: {searchQuery: userInput, searchBy: userSearchBy},
+        method: 'GET'
       }).then(function(res) {
         console.log('results from findusers -> ' + res.data);
         $scope.findUserResult = res.data;

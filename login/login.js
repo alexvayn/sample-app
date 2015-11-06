@@ -15,7 +15,9 @@ angular.module( 'sample.login', [
 
   $scope.login = function() {
     $http({
-      url: 'http://192.78.139.240:3001/idiom/internal/authenticate',
+      url: 'http://192.78.139.240:3001/authn/internal/v1/authenticate',
+      // url: 'http://192.78.139.240:3001/idiom/internal/authenticate',
+     // url:'http://192.78.139.240:3001/idiom/internal/authenticate/okta',
       method: 'POST',
       data: $scope.user
     }).then(function(response) {
@@ -23,7 +25,7 @@ angular.module( 'sample.login', [
       $state.go('home');
     }, function(error) {
       alert(error.data);
-    });    
+    });
   }
 
 });
