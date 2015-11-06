@@ -7,7 +7,7 @@
 .settings
 
 # Ignore node stuff
-node_modules/
+#node_modules/
 npm-debug.log
 libpeerconnection.log
 
@@ -15,4 +15,4 @@ libpeerconnection.log
 .DS_Store
 
 # Bower components
-vendor
+#vendor
