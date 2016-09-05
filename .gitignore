@@ -6,6 +6,7 @@
 .project
 .settings
 vendor
+bower_components
 
 # Ignore node stuff
 #node_modules/
